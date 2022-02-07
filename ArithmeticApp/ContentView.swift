@@ -7,11 +7,29 @@
 
 import SwiftUI
 
+//button style
+struct GrowingButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.vertical, 10)
+            .padding(.horizontal, 15)
+            .background(configuration.isPressed ? Color.blue.opacity(0.2) : Color.blue.opacity(0.06))
+            .foregroundColor(.black)
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.blue, lineWidth: 2)
+            )
+            .scaleEffect(configuration.isPressed ? 1.06 : 1)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+    }
+}
+
 struct ContentView: View {
     
     //MARK: Stored Properties
-    let multiplicand = Int.random(in: 1...12)
-    let multiplier = Int.random(in: 1...12)
+    @State var multiplicand = Int.random(in: 1...12)
+    @State var multiplier = Int.random(in: 1...12)
     @State var inputGiven = ""
     
     @State var answerCheck = false
@@ -41,7 +59,7 @@ struct ContentView: View {
                     .opacity(answerCorrect ? 1.0 : 0.0)
                 
                 Spacer()
-                TextField("Product",
+                TextField("Enter Product",
                           text: $inputGiven)
                     .font(.title)
                     .multilineTextAlignment(.trailing)
@@ -57,6 +75,8 @@ struct ContentView: View {
                 }
                 if actualProduct == productGiven {
                     answerCorrect = true
+                    multiplicand = Int.random(in: 1...12)
+                    multiplier = Int.random(in: 1...12)
                 } else {
                     answerCorrect = false
                 }
@@ -64,7 +84,7 @@ struct ContentView: View {
                 Text("Check Answer")
                     .font(.title)
             })
-                .buttonStyle(.bordered)
+                .buttonStyle(GrowingButton())
             Spacer()
         }
         .font(.system(size: 72))
