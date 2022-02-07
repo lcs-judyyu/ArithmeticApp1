@@ -14,6 +14,9 @@ struct ContentView: View {
     let multiplier = Int.random(in: 1...12)
     @State var inputGiven = ""
     
+    @State var answerCheck = false
+    @State var answerCorrect = false
+    
     //MARK: Computed Properties
     var actualProduct: Int {
         return multiplicand * multiplier
@@ -35,22 +38,27 @@ struct ContentView: View {
             HStack {
                 Image(systemName: "checkmark.circle")
                     .foregroundColor(Color.green)
+                    .opacity(answerCorrect ? 1.0 : 0.0)
                 
                 Spacer()
                 TextField("Product",
                           text: $inputGiven)
+                    .font(.title)
                     .multilineTextAlignment(.trailing)
             }
             Button(action: {
+                //answer has been checked
+                answerCheck = true
                 //check the answer
                 guard let productGiven = Int(inputGiven) else {
                     //Sometimes not a number
+                    answerCorrect = false
                     return
                 }
                 if actualProduct == productGiven {
-                    Text("You are right :)")
+                    answerCorrect = true
                 } else {
-                    Text("Wrong!!")
+                    answerCorrect = false
                 }
             }, label: {
                 Text("Check Answer")
