@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 60) {
+        VStack(alignment: .center, spacing: 20) {
             HStack(alignment: .center, spacing: 30) {
                 Text("✕")
                     .font(.system(size: 52))
@@ -18,21 +18,28 @@ struct ContentView: View {
                     Text("5")
                     Text("6")
                 }
-                .padding(20)
             }
-            .font(.system(size: 72))
+            
             Divider()
-            Text("30")
-                .font(.system(size: 72))
+            HStack {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(Color.green)
+                Spacer()
+                Text("30")
+                    .font(.system(size: 72))
+            }
             Button(action: {
                 print("Button was pressed")
             }, label: {
                 Text("Check Answer")
+                    .font(.system(size: 25))
             })
                 .buttonStyle(.bordered)
             Spacer()
         }
-        .padding(60)
+        .font(.system(size: 72))
+        .padding(.horizontal, 50)
+        .padding(.vertical, 40)
     }
 }
 
