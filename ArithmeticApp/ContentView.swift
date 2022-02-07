@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //MARK: Stored Properties
+    let multiplicand = Int.random(in: 1...12)
+    let multiplier = Int.random(in: 1...12)
+    @State var inputGiven = ""
+    
+    //MARK: Computed Properties
+    
+    
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
-            HStack(alignment: .center, spacing: 30) {
+            HStack(alignment: .center, spacing: 0) {
                 Text("✕")
                     .font(.system(size: 52))
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0) {
-                    Text("5")
-                    Text("6")
+                    Text("\(multiplicand)")
+                    Text("\(multiplier)")
                 }
             }
             
@@ -24,9 +33,11 @@ struct ContentView: View {
             HStack {
                 Image(systemName: "checkmark.circle")
                     .foregroundColor(Color.green)
+                
                 Spacer()
-                Text("30")
-                    .font(.system(size: 72))
+                TextField("Product",
+                          text: $inputGiven)
+                    .multilineTextAlignment(.trailing)
             }
             Button(action: {
                 print("Button was pressed")
