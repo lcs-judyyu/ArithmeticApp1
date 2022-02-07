@@ -15,7 +15,9 @@ struct ContentView: View {
     @State var inputGiven = ""
     
     //MARK: Computed Properties
-    
+    var actualProduct: Int {
+        return multiplicand * multiplier
+    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
@@ -40,10 +42,19 @@ struct ContentView: View {
                     .multilineTextAlignment(.trailing)
             }
             Button(action: {
-                print("Button was pressed")
+                //check the answer
+                guard let productGiven = Int(inputGiven) else {
+                    //Sometimes not a number
+                    return
+                }
+                if actualProduct == productGiven {
+                    Text("You are right :)")
+                } else {
+                    Text("Wrong!!")
+                }
             }, label: {
                 Text("Check Answer")
-                    .font(.system(size: 25))
+                    .font(.title)
             })
                 .buttonStyle(.bordered)
             Spacer()
