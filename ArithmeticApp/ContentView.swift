@@ -15,9 +15,9 @@ struct GrowingButton: ButtonStyle {
             .padding(.horizontal, 15)
             .background(configuration.isPressed ? Color.blue.opacity(0.2) : Color.blue.opacity(0.06))
             .foregroundColor(.black)
-            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .overlay(
-                RoundedRectangle(cornerRadius: 5)
+                RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.blue, lineWidth: 2)
             )
             .scaleEffect(configuration.isPressed ? 1.06 : 1)
