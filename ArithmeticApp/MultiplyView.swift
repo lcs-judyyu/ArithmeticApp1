@@ -31,7 +31,7 @@ struct MultiplyView: View {
     
     var body: some View {
         
-        VStack(spacing: 0) {
+        VStack(spacing: 20) {
             HStack {
                 Text("✕")
                 
@@ -96,7 +96,7 @@ struct MultiplyView: View {
                             .font(.title)
                     })
                         .padding(10)
-                        .buttonStyle(.bordered)
+                        .buttonStyle(GrowingButton())
                 } else {
                     
                     Button(action: {
@@ -111,7 +111,7 @@ struct MultiplyView: View {
                             .font(.title)
                     })
                         .padding(10)
-                        .buttonStyle(.bordered)
+                        .buttonStyle(GrowingButton())
                 }
             }
             

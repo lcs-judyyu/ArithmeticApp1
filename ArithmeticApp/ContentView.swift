@@ -58,12 +58,14 @@ struct ContentView: View {
                 ZStack {
                     Image(systemName: "checkmark.circle")
                         .foregroundColor(Color.green)
+                        .animation(.easeIn(duration: 2), value: 1)
                         .opacity(answerCorrect ? 1.0 : 0.0)
-                        .animation(.easeInOut(duration: 2), value: 1)
+                    
                     Image(systemName: "xmark.circle")
                         .foregroundColor(Color.red)
+                        .animation(.easeIn(duration: 2), value: 1)
                         .opacity(answerFalse ? 1.0 : 0.0)
-                        .animation(.easeInOut(duration: 2), value: 1)
+                    
                 }
                 
                 Spacer()
@@ -83,21 +85,21 @@ struct ContentView: View {
                     return
                 }
                 if actualProduct == productGiven {
-                    withAnimation(.easeInOut(duration: 2)) {
-                    answerCorrect = true
-                    answerFalse = false
+                    withAnimation(.easeIn(duration: 2)) {
+                        answerCorrect = true
+                        answerFalse = false
                     }
                     
                     multiplicand = Int.random(in: 1...12)
                     multiplier = Int.random(in: 1...12)
                     
                     inputGiven = ""
-             
+                    
                     
                 } else {
-                    withAnimation(.easeInOut(duration: 2)) {
-                    answerFalse = true
-                    answerCorrect = false
+                    withAnimation(.easeIn(duration: 2)) {
+                        answerFalse = true
+                        answerCorrect = false
                     }
                 }
             }, label: {

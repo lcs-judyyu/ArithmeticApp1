@@ -10,8 +10,8 @@ import SwiftUI
 struct AdditionView: View {
     
     //MARK: Stored Properties
-    @State var addition1 = Int.random(in: 1...50)
-    @State var addition2 = Int.random(in: 1...50)
+    @State var augend = Int.random(in: 1...50)
+    @State var addend = Int.random(in: 1...50)
     @State var inputGiven = ""
     
     @State var answerCheck = false
@@ -20,7 +20,7 @@ struct AdditionView: View {
     
     //MARK: Computed Properties
     var actualSum: Int {
-        return addition1 + addition2
+        return augend + addend
     }
     
     var body: some View {
@@ -30,8 +30,8 @@ struct AdditionView: View {
                     .font(.system(size: 52))
                 Spacer()
                 VStack(alignment: .trailing, spacing: 0) {
-                    Text("\(addition1)")
-                    Text("\(addition2)")
+                    Text("\(augend)")
+                    Text("\(addend)")
                 }
             }
             
@@ -52,35 +52,52 @@ struct AdditionView: View {
                     .font(.title)
                     .multilineTextAlignment(.trailing)
             }
-            Button(action: {
-                //answer has been checked
-                answerCheck = true
-                //check the answer
-                guard let sumGiven = Int(inputGiven) else {
-                    //Sometimes not a number
-                    answerCorrect = false
-                    answerFalse = true
-                    return
+            ZStack {
+                    Button(action: {
+                        
+                        // Answer has been checked!
+                        answerCheck = true
+                        
+                        // Convert the input given to an integer, if possible
+                        guard let sumGiven = Int(inputGiven) else {
+                            // Sadness, not a number
+                            answerCorrect = false
+                            answerFalse = true
+                            return
+                        }
+                        
+                        // Check the answer!
+                        if sumGiven == actualSum {
+                            // Celebrate! 👍🏼
+                            answerCorrect = true
+                            answerFalse = false
+                        } else {
+                            // Sadness, they gave a number, but it's correct 😭
+                            answerCorrect = false
+                            answerFalse = true
+                        }
+                    }, label: {
+                        Text("Check Answer")
+                            .font(.title)
+                    })
+                        .buttonStyle(GrowingButton())
+                        .opacity(answerCheck ? 0.0 : 1.0)
+
+                    
+                    Button(action: {
+                        answerCheck = false
+                        answerCorrect = false
+                        answerFalse = false
+                        augend = Int.random(in: 1...50)
+                        addend = Int.random(in: 1...50)
+                        inputGiven = ""
+                    }, label: {
+                        Text("New Question")
+                            .font(.title)
+                    })
+                        .buttonStyle(GrowingButton())
+                        .opacity(answerCheck ? 1.0 : 0.0)
                 }
-                if actualSum == sumGiven {
-                    answerCorrect = true
-                    answerFalse = false
-                    
-                    addition1 = Int.random(in: 1...50)
-                    addition2 = Int.random(in: 1...50)
-                    
-                    inputGiven = ""
-                    
-                } else {
-                    answerFalse = true
-                    answerCorrect = false
-                }
-            }, label: {
-                
-                Text("Check Answer")
-                    .font(.title)
-            })
-                .buttonStyle(GrowingButton())
             Spacer()
         }
         .font(.system(size: 72))
