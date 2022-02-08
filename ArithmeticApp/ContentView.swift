@@ -34,6 +34,7 @@ struct ContentView: View {
     
     @State var answerCheck = false
     @State var answerCorrect = false
+    @State var answerFalse = false
     
     //MARK: Computed Properties
     var actualProduct: Int {
@@ -54,9 +55,14 @@ struct ContentView: View {
             
             Divider()
             HStack {
-                Image(systemName: "checkmark.circle")
-                    .foregroundColor(Color.green)
-                    .opacity(answerCorrect ? 1.0 : 0.0)
+                ZStack {
+                    Image(systemName: "checkmark.circle")
+                        .foregroundColor(Color.green)
+                        .opacity(answerCorrect ? 1.0 : 0.0)
+                    Image(systemName: "xmark.circle")
+                        .foregroundColor(Color.red)
+                        .opacity(answerFalse ? 1.0 : 0.0)
+                }
                 
                 Spacer()
                 TextField("Enter Product",
@@ -71,16 +77,24 @@ struct ContentView: View {
                 guard let productGiven = Int(inputGiven) else {
                     //Sometimes not a number
                     answerCorrect = false
+                    answerFalse = true
                     return
                 }
                 if actualProduct == productGiven {
                     answerCorrect = true
+                    answerFalse = false
+                    
                     multiplicand = Int.random(in: 1...12)
                     multiplier = Int.random(in: 1...12)
+                    
+                    inputGiven = ""
+                    
                 } else {
+                    answerFalse = true
                     answerCorrect = false
                 }
             }, label: {
+                
                 Text("Check Answer")
                     .font(.title)
             })
