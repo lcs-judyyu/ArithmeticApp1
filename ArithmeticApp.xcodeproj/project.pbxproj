@@ -13,6 +13,7 @@
 		5AA17D9227B15B8300A8939A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AA17D9127B15B8300A8939A /* Preview Assets.xcassets */; };
 		5AA17D9927B1DFD000A8939A /* AdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA17D9827B1DFD000A8939A /* AdditionView.swift */; };
 		5AFC443227B2CC6500D8E6FD /* MultiplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC443127B2CC6500D8E6FD /* MultiplyView.swift */; };
+		5AFC443427B2DE0800D8E6FD /* SubtractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC443327B2DE0800D8E6FD /* SubtractionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		5AA17D9127B15B8300A8939A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5AA17D9827B1DFD000A8939A /* AdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionView.swift; sourceTree = "<group>"; };
 		5AFC443127B2CC6500D8E6FD /* MultiplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyView.swift; sourceTree = "<group>"; };
+		5AFC443327B2DE0800D8E6FD /* SubtractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				5AA17D8C27B15B7D00A8939A /* ContentView.swift */,
 				5AFC443127B2CC6500D8E6FD /* MultiplyView.swift */,
 				5AA17D9827B1DFD000A8939A /* AdditionView.swift */,
+				5AFC443327B2DE0800D8E6FD /* SubtractionView.swift */,
 				5AA17D8E27B15B8300A8939A /* Assets.xcassets */,
 				5AA17D9027B15B8300A8939A /* Preview Content */,
 			);
@@ -147,6 +150,7 @@
 				5AA17D8D27B15B7D00A8939A /* ContentView.swift in Sources */,
 				5AA17D8B27B15B7D00A8939A /* ArithmeticAppApp.swift in Sources */,
 				5AA17D9927B1DFD000A8939A /* AdditionView.swift in Sources */,
+				5AFC443427B2DE0800D8E6FD /* SubtractionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
