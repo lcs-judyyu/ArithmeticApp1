@@ -1,5 +1,5 @@
 //
-//  MultiplyView.swift
+//  DivisionView.swift
 //  ArithmeticApp
 //
 //  Created by Judy Yu on 2022-02-08.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MultiplyView: View {
+struct DivisionView: View {
     
     // MARK: Stored properties
     //@State updates user interface when the values are changed
-    @State var multiplicand = Int.random(in: 1...12)
-    @State var multiplier = Int.random(in: 1...12)
+    @State var dividend = Int.random(in: 1...12)
+    @State var divisor = Int.random(in: 1...12)
     //this string contains user input
     @State var inputGiven = ""
     
@@ -24,9 +24,9 @@ struct MultiplyView: View {
     @State var answerFalse = false
     
     // MARK: Computed properties
-    // What is the correct product?
-    var correctProduct: Int {
-        return multiplicand * multiplier
+    // What is the correct Quotient?
+    var correctQuotient: Int {
+        return dividend / divisor
     }
     
     var body: some View {
@@ -38,8 +38,8 @@ struct MultiplyView: View {
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    Text("\(multiplicand)")
-                    Text("\(multiplier)")
+                    Text("\(dividend)")
+                    Text("\(divisor)")
                 }
             }
             
@@ -60,7 +60,7 @@ struct MultiplyView: View {
                 }
                 
                 Spacer()
-                TextField("Enter Product",
+                TextField("Enter Quotient",
                           text: $inputGiven)
                     .font(.title)
                     .multilineTextAlignment(.trailing)
@@ -74,7 +74,7 @@ struct MultiplyView: View {
                         answerChecked = true
                         
                         // Convert the input given to an integer, if possible
-                        guard let productGiven = Int(inputGiven) else {
+                        guard let quotientGiven = Int(inputGiven) else {
                             // Sadness, not a number
                             answerCorrect = false
                             answerFalse = true
@@ -82,7 +82,7 @@ struct MultiplyView: View {
                         }
                         
                         // Check the answer!
-                        if productGiven == correctProduct {
+                        if quotientGiven == correctQuotient {
                             // Celebrate! 👍🏼
                             answerCorrect = true
                             answerFalse = false
@@ -103,8 +103,8 @@ struct MultiplyView: View {
                         answerChecked = false
                         answerCorrect = false
                         answerFalse = false
-                        multiplicand = Int.random(in: 1...12)
-                        multiplier = Int.random(in: 1...12)
+                        dividend = Int.random(in: 1...12)
+                        divisor = Int.random(in: 1...12)
                         inputGiven = ""
                     }, label: {
                         Text("New Question")
@@ -126,8 +126,8 @@ struct MultiplyView: View {
     }
 }
 
-struct MultiplyView_Previews: PreviewProvider {
+struct DivisionView_Previews: PreviewProvider {
     static var previews: some View {
-        MultiplyView()
+        DivisionView()
     }
 }
