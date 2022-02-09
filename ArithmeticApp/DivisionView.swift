@@ -14,7 +14,7 @@ struct DivisionView: View {
     @State var dividend = Int.random(in: 1...12) * 8
     
     //let numbers = [1, 2, 4]
-   // @State var divisor = 2 * numbers.randomElement()!
+    // @State var divisor = 2 * numbers.randomElement()!
     
     @State var divisor = Int.random(in: 1...2) * 2
     //this string contains user input
@@ -37,7 +37,7 @@ struct DivisionView: View {
         
         VStack(spacing: 20) {
             HStack {
-                Text("✕")
+                Text("➗")
                 
                 Spacer()
                 
