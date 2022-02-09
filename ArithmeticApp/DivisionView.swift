@@ -11,8 +11,8 @@ struct DivisionView: View {
     
     // MARK: Stored properties
     //@State updates user interface when the values are changed
-    @State var dividend = Int.random(in: 1...12)
-    @State var divisor = Int.random(in: 1...12)
+    @State var dividend = Int.random(in: 1...12) * 8
+    @State var divisor = Int.random(in: 1...3) * 2
     //this string contains user input
     @State var inputGiven = ""
     
