@@ -12,7 +12,11 @@ struct DivisionView: View {
     // MARK: Stored properties
     //@State updates user interface when the values are changed
     @State var dividend = Int.random(in: 1...12) * 8
-    @State var divisor = Int.random(in: 1...3) * 2
+    
+    //let numbers = [1, 2, 4]
+   // @State var divisor = 2 * numbers.randomElement()!
+    
+    @State var divisor = Int.random(in: 1...2) * 2
     //this string contains user input
     @State var inputGiven = ""
     
@@ -103,8 +107,8 @@ struct DivisionView: View {
                         answerChecked = false
                         answerCorrect = false
                         answerFalse = false
-                        dividend = Int.random(in: 1...12)
-                        divisor = Int.random(in: 1...12)
+                        dividend = Int.random(in: 1...12) * 8
+                        divisor = Int.random(in: 1...2) * 2
                         inputGiven = ""
                     }, label: {
                         Text("New Question")

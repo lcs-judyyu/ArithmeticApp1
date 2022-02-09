@@ -88,7 +88,7 @@ struct SubtractionView: View {
                         answerCheck = false
                         answerCorrect = false
                         answerFalse = false
-                        minuend = Int.random(in: 1...50)
+                        minuend = Int.random(in: 51...100)
                         subtrahend = Int.random(in: 1...50)
                         inputGiven = ""
                     }, label: {
